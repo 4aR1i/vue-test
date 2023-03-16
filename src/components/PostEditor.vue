@@ -15,6 +15,7 @@
 </template>
 
 <script lang="ts">
+import type { Comment, Post } from '@/types/PostModuleTypes';
 import { defineComponent } from 'vue';
 import { mapGetters } from 'vuex';
 import CommentItem from './CommentItem.vue'
@@ -30,10 +31,10 @@ export default defineComponent({
       postById: 'posts/postById',
       commentsById: 'posts/commentsById'
     }),
-    post() {
+    post(): Post {
       return this.postById(Number(this.$route.params.id))
     },
-    comments() {
+    comments(): Comment[] {
       return this.commentsById(this.post?.id)
     }
   },

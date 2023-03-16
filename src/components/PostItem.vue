@@ -20,6 +20,7 @@
 </template>
 
 <script lang="ts">
+import type { Post } from '@/types/PostModuleTypes';
 import { mapGetters } from 'vuex';
 import PostMessage from './PostMessage.vue';
 export default {
@@ -46,7 +47,7 @@ export default {
     ...mapGetters({
       messagesByUserId: 'posts/messagesByUserId'
     }),
-    messages() {
+    messages(): Post[] {
       return this.messagesByUserId(this.user.id)
     }
   }
